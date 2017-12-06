@@ -46,6 +46,7 @@ public class CardAdapter extends BaseCardAdapter {
         }
         final ImageView imageView = (ImageView)cardview.findViewById(R.id.imageView);
         TextView textView = (TextView)cardview.findViewById(R.id.textView);
+
         final Model model = modelList.get(position);
         textView.setText(model.getTitle());
         Handler uiHandler = new Handler(Looper.getMainLooper());

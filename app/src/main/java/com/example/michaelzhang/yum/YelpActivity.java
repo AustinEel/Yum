@@ -3,9 +3,11 @@ package com.example.michaelzhang.yum;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.michaelzhang.yum.Adapter.CardAdapter;
 import com.example.michaelzhang.yum.Model.Model;
+import com.example.michaelzhang.yum.Model.OnSwipeTouchListener;
 import com.huxq17.swipecardsview.SwipeCardsView;
 
 import org.json.JSONArray;
@@ -34,6 +36,22 @@ public class YelpActivity extends AppCompatActivity {
         swipeCardsView = (SwipeCardsView)findViewById(R.id.swipeCardsView);
         swipeCardsView.retainLastCard(false);
         swipeCardsView.enableSwipe(true);
+
+        swipeCardsView.setOnTouchListener(new OnSwipeTouchListener(YelpActivity.this) {
+            public void onSwipeTop() {
+                Toast.makeText(YelpActivity.this, "top", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeRight() {
+                Toast.makeText(YelpActivity.this, "right", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeLeft() {
+                Toast.makeText(YelpActivity.this, "left", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeBottom() {
+                Toast.makeText(YelpActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+            }
+
+        });
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
